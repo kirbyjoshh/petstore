@@ -57,11 +57,3 @@ INSERT INTO pet_photos (pet_id, url, is_primary, sort_order) VALUES
   (18,'https://placehold.co/400x300/ffcc00/333333?text=Bubbles',true,0),
   (19,'https://placehold.co/400x300/4dd0e1/ffffff?text=Dory',true,0),
   (20,'https://placehold.co/400x300/ff6699/ffffff?text=Flash',true,0);
-  ('a0000003-0000-0000-0000-000000000003','https://placehold.co/400x300/ffd700/333333?text=Sunny',true,0),
-  ('a0000003-0000-0000-0000-000000000004','https://placehold.co/400x300/ff6347/ffffff?text=Pepper',true,0),
-  ('a0000003-0000-0000-0000-000000000005','https://placehold.co/400x300/4169e1/ffffff?text=Echo',true,0),
-  ('a0000004-0000-0000-0000-000000000001','https://placehold.co/400x300/ff8c00/ffffff?text=Nemo',true,0),
-  ('a0000004-0000-0000-0000-000000000002','https://placehold.co/400x300/dc143c/ffffff?text=Ariel',true,0),
-  ('a0000004-0000-0000-0000-000000000003','https://placehold.co/400x300/ffd700/333333?text=Bubbles',true,0),
-  ('a0000004-0000-0000-0000-000000000004','https://placehold.co/400x300/00bfff/ffffff?text=Dory',true,0),
-  ('a0000004-0000-0000-0000-000000000005','https://placehold.co/400x300/ff4500/ffffff?text=Flash',true,0);
