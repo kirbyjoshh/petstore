@@ -1,0 +1,14 @@
+package com.petstore.pet.dto;
+
+import java.math.BigDecimal;
+
+public record PetSummaryDto(
+        Long id,
+        String name,
+        String category,
+        String breed,
+        int ageMonths,
+        BigDecimal price,
+        boolean available,
+        String primaryPhotoUrl
+) {}
