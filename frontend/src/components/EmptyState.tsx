@@ -22,10 +22,38 @@ export default function EmptyState({ message, categories = [] }: EmptyStateProps
       : 'No pets available at the moment.'
 
   return (
-    <Box className="flex flex-col items-center justify-center py-16">
-      <Box className="glass-card p-10 rounded-[32px] text-center">
-        <PetsIcon sx={{ fontSize: 64, color: '#60a5fa' }} />
-        <Typography variant="h6" color="text.secondary" sx={{ mt: 2 }}>
+    <Box className="flex flex-col items-center justify-center py-20">
+      <Box 
+        className="glass-card p-12 rounded-3xl text-center"
+        sx={{
+          background: 'linear-gradient(135deg, rgba(59, 130, 246, 0.08) 0%, rgba(236, 72, 153, 0.05) 100%)',
+          border: '1px solid rgba(59, 130, 246, 0.15)',
+        }}
+      >
+        <Box 
+          sx={{
+            display: 'inline-flex',
+            justifyContent: 'center',
+            alignItems: 'center',
+            width: 80,
+            height: 80,
+            borderRadius: '50%',
+            background: 'linear-gradient(135deg, rgba(59, 130, 246, 0.2) 0%, rgba(236, 72, 153, 0.1) 100%)',
+            border: '2px solid rgba(59, 130, 246, 0.3)',
+            mb: 3,
+          }}
+        >
+          <PetsIcon sx={{ fontSize: 48, color: '#60a5fa' }} />
+        </Box>
+        <Typography 
+          variant="h6" 
+          sx={{ 
+            color: '#cbd5e1',
+            fontWeight: 500,
+            fontSize: '1.125rem',
+            letterSpacing: '-0.3px',
+          }}
+        >
           {message ?? defaultMessage}
         </Typography>
       </Box>

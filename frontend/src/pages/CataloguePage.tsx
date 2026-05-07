@@ -1,6 +1,6 @@
 import { useState } from 'react'
 import { Container, Typography, Box, Pagination, AppBar, Toolbar, Grid, Paper, Button, Dialog, DialogTitle, DialogContent, DialogActions, TextField, Select, MenuItem, FormControl, InputLabel, Switch, FormControlLabel, Snackbar, Alert, CircularProgress } from '@mui/material'
-import { useSearchParams } from 'react-router-dom'
+import { useSearchParams, useNavigate } from 'react-router-dom'
 import { usePets } from '../hooks/usePets'
 import PetGrid from '../components/PetGrid'
 import PetCardSkeleton from '../components/PetCardSkeleton'
@@ -11,6 +11,7 @@ import CartButton from '../components/CartButton'
 import { createPet, CreatePetPayload } from '../api/adminApi'
 
 export default function CataloguePage() {
+  const navigate = useNavigate()
   const [searchParams, setSearchParams] = useSearchParams()
 
   // Sanitize: strip any category values that aren't valid
@@ -91,36 +92,134 @@ export default function CataloguePage() {
 
   return (
     <>
-      <AppBar position="static" color="primary" elevation={1}>
-        <Toolbar>
-          <Typography variant="h6" className="font-bold tracking-wide">
+      <AppBar 
+        position="static" 
+        color="primary" 
+        elevation={0}
+        sx={{
+          background: 'linear-gradient(135deg, rgba(59, 130, 246, 0.1) 0%, rgba(59, 130, 246, 0.05) 100%)',
+          backdropFilter: 'blur(8px)',
+          borderBottom: '1px solid rgba(255, 255, 255, 0.08)',
+        }}
+      >
+        <Toolbar sx={{ gap: 2, py: 1.5 }}>
+          <Typography 
+            variant="h6" 
+            className="font-display font-bold text-2xl"
+            sx={{ 
+              background: 'linear-gradient(135deg, #60a5fa 0%, #3b82f6 100%)',
+              backgroundClip: 'text',
+              WebkitBackgroundClip: 'text',
+              WebkitTextFillColor: 'transparent',
+            }}
+          >
             🐾 Petstore
           </Typography>
+          <Box sx={{ flex: 1 }} />
           <CartButton />
         </Toolbar>
       </AppBar>
-      <Container maxWidth="xl" className="py-10">
-        <Box className="flex flex-col gap-6">
-          <Paper className="glass-card hero-card overflow-hidden" sx={{ p: 4, borderRadius: 4 }}>
-            <Box className="flex flex-col gap-4 lg:flex-row lg:items-center lg:justify-between">
-              <Box>
-                <Typography variant="h3" component="h1" className="font-bold text-slate-900">
+      <Container maxWidth="xl" className="py-12">
+        <Box className="flex flex-col gap-8">
+          <Paper 
+            className="glass-card hero-card overflow-hidden" 
+            sx={{ 
+              p: 6,
+              borderRadius: '2rem',
+              background: 'linear-gradient(135deg, rgba(59, 130, 246, 0.12) 0%, rgba(236, 72, 153, 0.08) 100%)',
+              border: '1px solid rgba(59, 130, 246, 0.2)',
+            }}
+          >
+            <Box className="flex flex-col gap-6 lg:flex-row lg:items-center lg:justify-between">
+              <Box className="flex-1">
+                <Typography 
+                  variant="h3" 
+                  component="h1" 
+                  className="font-display font-bold text-4xl lg:text-5xl leading-tight mb-4"
+                  sx={{
+                    background: 'linear-gradient(135deg, #e0f2fe 0%, #bfdbfe 100%)',
+                    backgroundClip: 'text',
+                    WebkitBackgroundClip: 'text',
+                    WebkitTextFillColor: 'transparent',
+                  }}
+                >
                   Modern Pet Shopping, Reimagined
                 </Typography>
-                <Typography variant="body1" color="text.secondary" className="max-w-2xl mt-2">
+                <Typography 
+                  variant="body1" 
+                  color="text.secondary" 
+                  className="max-w-2xl text-lg leading-relaxed"
+                  sx={{ color: '#cbd5e1' }}
+                >
                   Discover healthy, happy pets in a polished online marketplace designed for pet lovers.
                 </Typography>
               </Box>
-              <Box className="flex flex-col gap-2 sm:flex-row sm:items-center">
-                <Button variant="contained" color="primary" onClick={() => window.scrollTo({ top: 260, behavior: 'smooth' })}>
+              <Box className="flex flex-col gap-3 sm:flex-row sm:items-center sm:justify-end">
+                <Button 
+                  variant="contained" 
+                  color="primary" 
+                  onClick={() => window.scrollTo({ top: 360, behavior: 'smooth' })}
+                  sx={{
+                    background: 'linear-gradient(135deg, #3b82f6 0%, #2563eb 100%)',
+                    boxShadow: '0 8px 20px rgba(59, 130, 246, 0.3)',
+                    textTransform: 'none',
+                    fontWeight: 600,
+                    fontSize: '1rem',
+                    py: 1.5,
+                    px: 3,
+                    borderRadius: '0.875rem',
+                    transition: 'all 0.3s cubic-bezier(0.4, 0, 0.2, 1)',
+                    '&:hover': {
+                      transform: 'translateY(-2px)',
+                      boxShadow: '0 12px 28px rgba(59, 130, 246, 0.4)',
+                    }
+                  }}
+                >
                   Browse Pets
                 </Button>
-                <Button variant="outlined" color="primary" onClick={openAddDialog} sx={{ textTransform: 'none' }}>
+                <Button 
+                  variant="outlined" 
+                  color="primary" 
+                  onClick={openAddDialog}
+                  sx={{
+                    textTransform: 'none',
+                    fontWeight: 600,
+                    fontSize: '1rem',
+                    py: 1.5,
+                    px: 3,
+                    borderRadius: '0.875rem',
+                    borderColor: 'rgba(59, 130, 246, 0.4)',
+                    color: '#60a5fa',
+                    transition: 'all 0.3s ease',
+                    '&:hover': {
+                      borderColor: 'rgba(59, 130, 246, 0.8)',
+                      backgroundColor: 'rgba(59, 130, 246, 0.1)',
+                    }
+                  }}
+                >
                   Add Animal
                 </Button>
-                <Typography variant="caption" color="text.secondary" className="mt-2 sm:mt-0 sm:ml-4">
-                  New arrivals every week.
-                </Typography>
+                <Button 
+                  variant="text" 
+                  color="primary" 
+                  onClick={() => navigate('/admin')}
+                  sx={{
+                    textTransform: 'none',
+                    fontWeight: 500,
+                    fontSize: '0.95rem',
+                    py: 1.5,
+                    px: 2.5,
+                    borderRadius: '0.75rem',
+                    color: '#94a3b8',
+                    transition: 'all 0.3s ease',
+                    '&:hover': {
+                      color: '#cbd5e1',
+                      backgroundColor: 'rgba(255, 255, 255, 0.05)',
+                    }
+                  }}
+                >
+                  Admin
+                </Button>
               </Box>
             </Box>
           </Paper>
