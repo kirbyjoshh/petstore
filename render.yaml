@@ -3,8 +3,10 @@ services:
   - type: web
     name: petstore-backend
     env: docker
+    plan: free
     dockerfilePath: ./backend/Dockerfile
     dockerContext: ./backend
+    healthCheckPath: /api/pets
     envVars:
       - key: DB_HOST
         fromDatabase:
